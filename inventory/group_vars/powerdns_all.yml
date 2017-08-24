@@ -20,4 +20,4 @@ pdns_config:
 pdns_backends:
   pipe:
     command: /opt/dynhost.py
-    regex: '^[^\.]+\.ip\.continuous\.pw$'
+    regex: '^[^\.]*\.?ip\.continuous\.pw$'
