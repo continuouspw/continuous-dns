@@ -41,6 +41,11 @@ while True:
             qname, qclass, qtype, 86400, id, 'ns.none', 'email.none',
             int(time()), 172800, 900, 1209600, 3600
         )
+    elif qtype == "CAA":
+        r = "DATA\t{}\t{}\t{}\t{}\t{}\t{}\n".format(
+          qname, qclass, 'CAA', 0, id,
+          'issue "letsencrypt.org"'
+        )
     else:
         resp_ip = hex2ip(qname.split('.')[0])
         r = "DATA\t{}\t{}\t{}\t{}\t{}\t{}\n".format(
