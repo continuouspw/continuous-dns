@@ -22,11 +22,16 @@
   pre_tasks:
     - name: Copy the pipe backend script
       copy:
-        src: dynhost.py
-        dest: /opt/dynhost.py
-        owner: root
-        group: root
-        mode: '0755'
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "{{ item.owner | default('root') }}"
+        group: "{{ item.group | default('root') }}"
+        mode: "{{ item.mode | default('0755') }}"
+      with_items:
+        - src: dynhost.py
+          dest: /opt/dynhost.py
+        - src: dynhost6.py
+          dest: /opt/dynhost6.py
   roles:
     - role: powerdns
   tags:

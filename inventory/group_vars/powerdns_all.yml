@@ -18,6 +18,9 @@ pdns_config:
   local-ipv6: "{{ ansible_default_ipv6.address }}"
 
 pdns_backends:
-  pipe:
+  'pipe:v4':
     command: /opt/dynhost.py
     regex: '^[^\.]*\.?ip\.continuous\.pw$'
+  'pipe:v6':
+    command: /opt/dynhost6.py
+    regex: '^[^\.]*\.?ip6\.continuous\.pw$'
